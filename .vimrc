@@ -21,10 +21,9 @@ call plug#begin('~/.vim/plugged')
 
 " Themes
 Plug 'morhetz/gruvbox'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'glepnir/oceanic-material'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 " IDE
 Plug 'scrooloose/nerdtree'
@@ -77,9 +76,11 @@ call plug#end()
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-let NERDTreeQuitOnOpen = 1
-
 let mapleader=" "
+
+" Nerdtree setup
+nmap <leader>nt :NERDTree<CR>
+let NERDTreeQuitOnOpen = 1
 
 nmap <Leader>w :w!<CR>
 nmap <Leader>q :q<CR>
@@ -177,13 +178,7 @@ endif
 " Telescope config file
 source /Users/mateooviedo/.config/nvim/telescope.vim
 
-let date = strftime("%H")
+colorscheme oceanic_material
 
-if date > 14
-	set background=dark
-	colorscheme oceanic_material
-else
-	let ayucolor="light"
-	colorscheme ayu
-endif
-
+" airline theme
+let g:airline_theme='fruit_punch'
